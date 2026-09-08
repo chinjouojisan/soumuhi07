@@ -1,0 +1,13 @@
+{
+  "name": "カコモと学ぶ 決算チャレンジ 総務費編",
+  "short_name": "決算チャレンジ",
+  "description": "加古川市 令和7年度決算「総務費」を、クイズと予算判断シミュレーションで学べます。",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#EAF6FC",
+  "theme_color": "#1C2B3A",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
