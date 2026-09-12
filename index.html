@@ -224,6 +224,7 @@ function fmtChoice(c){ return typeof c === 'number' ? fmtApprox(c) : c; }
 let state = { view:'home' };
 
 function render(){
+  window.scrollTo(0, 0);
   app.innerHTML = '';
   if(state.view === 'home') renderHome();
   else if(state.view === 'quizPick') renderQuizPick();
