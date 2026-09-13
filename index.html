@@ -992,6 +992,26 @@ function renderSimDone(){
   app.appendChild(btn);
 }
 
+/* ---------- ハブからの直接ジャンプ (?jigyo=事業名) ---------- */
+(function(){
+  try {
+    const params = new URLSearchParams(location.search);
+    const jigyoName = params.get('jigyo');
+    if(!jigyoName) return;
+    const idx = DATA.main21.findIndex(c => c.事業名 === jigyoName);
+    if(idx === -1) return; // 一致しなければ何もせず通常のホーム画面へ
+    const saved = loadProgress();
+    state = {
+      view: 'simDetail',
+      idx: idx,
+      category: isMandatory(jigyoName) ? 'mandatory' : 'discretionary',
+      running: (saved && saved.running) || 0,
+      judged: (saved && saved.judged) || {},
+      memos: (saved && saved.memos) || {}
+    };
+  } catch(e) { /* 何かあっても通常のホーム画面にフォールバック */ }
+})();
+
 render();
 
 if('serviceWorker' in navigator){
