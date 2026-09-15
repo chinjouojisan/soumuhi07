@@ -209,7 +209,7 @@
 <script>
 const KAKOMO_SRC = "data:image/webp;base64," + document.getElementById('kakomo-b64').textContent.trim();
 const DATA = JSON.parse(document.getElementById('game-data').textContent);
-const HUB_URL = 'https://chinjouojisan.github.io/kessan-challenge-hub/';
+const HUB_URL = 'https://chinjouojisan.github.io/kakogawakessan07/';
 const R8_REF = [
   {"事業名":"ＩＣＴを活用した安全・安心のまちづくり推進事業","r8参考":"令和8年度予算は69,569千円で、前年度から208,470千円の減額"},
   {"事業名":"かわまちづくり推進事業","r8参考":"継続費(令和7〜8年度)のスケジュールに沿って、令和8年度は267,085千円を計上"},
@@ -399,7 +399,7 @@ function renderHome(){
 
   const note = document.createElement('p');
   note.className = 'footer-note';
-  note.textContent = '出典: 加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）、令和8年度予算のポイント・予算書。実際の議員の質問との比較は議事録公開後に追加予定です。';
+  note.innerHTML = 'このサイトは、加古川生まれのカコモが案内する、市民有志による<strong>加古川市の非公式コンテンツ</strong>です。加古川市が公式に作成・監修したものではありません。<br><br>出典: 加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）、令和8年度予算のポイント・予算書。<br><br>本編シミュレーションで示す「一人当たり」「1件あたり」等の単価は、公開されている決算資料の総額を件数・人数で単純に割った参考値であり、制度上の実際の給付額や事業の妥当性を評価したものではありません。<br><br>この事業について議会でどんな議論があったかは、議事録公開後に見てみる予定です。';
   app.appendChild(note);
 }
 
@@ -1016,7 +1016,7 @@ function renderSimDone(){
 
   const note = document.createElement('p');
   note.className = 'footer-note';
-  note.textContent = `${Object.keys(state.judged).length} / ${DATA.main21.length}件を判断しました。法定給付事業への判断は、影響額の集計には含まれていません。実際の議員の質問との答え合わせは、議事録公開後に追加予定です。`;
+  note.textContent = `${Object.keys(state.judged).length} / ${DATA.main21.length}件を判断しました。法定給付事業への判断は、影響額の集計には含まれていません。議会でどんな議論があったかは、議事録公開後に見てみる予定です(議員の質問が唯一の「正解」というわけではありません)。`;
   app.appendChild(note);
 
   const backList = document.createElement('button');
