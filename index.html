@@ -209,6 +209,21 @@
 <script>
 const KAKOMO_SRC = "data:image/webp;base64," + document.getElementById('kakomo-b64').textContent.trim();
 const DATA = JSON.parse(document.getElementById('game-data').textContent);
+const HUB_URL = 'https://chinjouojisan.github.io/kessan-challenge-hub/';
+const R8_REF = [
+  {"事業名":"ＩＣＴを活用した安全・安心のまちづくり推進事業","r8参考":"令和8年度予算は69,569千円で、前年度から208,470千円の減額"},
+  {"事業名":"かわまちづくり推進事業","r8参考":"継続費(令和7〜8年度)のスケジュールに沿って、令和8年度は267,085千円を計上"},
+  {"事業名":"ウェルネス施設管理運営事業","r8参考":"令和8年度は1,020,437千円で257,119千円の減額。一方でウェルネスパーク・日岡山市民プールの改修費用は継続費として別途計上"},
+  {"事業名":"国勢調査事業","r8参考":"5年に一度の調査で前回は令和7年度実施のため、令和8年度は予算計上なし(周期事業)"},
+  {"事業名":"参議院議員選挙事業","r8参考":"令和8年度は選挙の実施年度でないため予算計上なし"},
+  {"事業名":"庁舎維持補修事業","r8参考":"令和8年度は新館天井の耐震対策(247,000千円)・附属棟外構のLED化(30,000千円)を実施"},
+  {"事業名":"シティプロモーション推進事業","r8参考":"令和8年度は27,580千円を計上(ラッピングバス追加等の拡充)"},
+  {"事業名":"スマートシティ・ＤＸ推進事業","r8参考":"令和8年度に生成AIサービス導入費用(2,640千円)を計上"},
+  {"事業名":"協働のまちづくり推進事業","r8参考":"令和8年度は15,410千円(うち補助金11,810千円)を計上、継続"},
+  {"事業名":"防災及び災害関係事業","r8参考":"令和8年度は被災者支援システム関連で6,975千円を計上"},
+  {"事業名":"証明書等コンビニ交付事業","r8参考":"令和8年度はコンビニ交付手数料を300円から150円に減額(19,150千円)"}
+];
+
 const app = document.getElementById('app');
 
 function fmtApprox(n){
@@ -296,6 +311,14 @@ function progressBar(done, total){
 }
 
 function brandHeader(){
+  const wrap = document.createElement('div');
+
+  const hubLink = document.createElement('a');
+  hubLink.href = HUB_URL;
+  hubLink.textContent = '← 11款すべてを見る(ハブへ戻る)';
+  hubLink.style.cssText = 'display:inline-block; font-size:12px; color:var(--water); text-decoration:none; margin-bottom:6px;';
+  wrap.appendChild(hubLink);
+
   const div = document.createElement('div');
   div.className = 'brand';
   div.innerHTML = `
@@ -305,7 +328,8 @@ function brandHeader(){
     </div>
     <div class="stamp"><img src="${KAKOMO_SRC}" alt="カコモ"></div>
   `;
-  return div;
+  wrap.appendChild(div);
+  return wrap;
 }
 
 function renderHome(){
@@ -354,9 +378,28 @@ function renderHome(){
   simBtn.onclick = () => startSim();
   app.appendChild(simBtn);
 
+  if(R8_REF && R8_REF.length){
+    const r8card = document.createElement('div');
+    r8card.className = 'menu-card';
+    r8card.style.cssText = 'cursor:default;';
+    const items = R8_REF.map(r => `
+      <details style="margin-top:8px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">${r.事業名}</summary>
+        <p style="font-size:12.5px; line-height:1.7; color:var(--navy); margin:6px 0 0;">${r.r8参考}</p>
+      </details>
+    `).join('');
+    r8card.innerHTML = `
+      <div class="label">STEP 3 · その後どうなった?</div>
+      <div class="title">令和8年度予算では</div>
+      <div class="desc">令和7年度決算で見た事業が、令和8年度の予算でどう扱われたかを確認できます(${R8_REF.length}件・予算段階の情報のため確定額ではありません)。</div>
+      ${items}
+    `;
+    app.appendChild(r8card);
+  }
+
   const note = document.createElement('p');
   note.className = 'footer-note';
-  note.textContent = '出典: 加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）。答え合わせ（実際の議員の質問との比較）は議事録公開後に追加予定です。';
+  note.textContent = '出典: 加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）、令和8年度予算のポイント・予算書。実際の議員の質問との比較は議事録公開後に追加予定です。';
   app.appendChild(note);
 }
 
