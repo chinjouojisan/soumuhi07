@@ -4,18 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>カコモと学ぶ 決算チャレンジ 総務費編 | 加古川市</title>
+<link rel="canonical" href="https://chinjouojisan.github.io/soumuhi07/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"カコモと学ぶ 決算チャレンジ 総務費編","description":"加古川市 令和7年度決算の「総務費」約125億円を、クイズと予算判断シミュレーションで学べます。案内役はカコモ。","url":"https://chinjouojisan.github.io/soumuhi07/","inLanguage":"ja","learningResourceType":"interactive simulation","about":{"@type":"GovernmentOrganization","name":"加古川市"},"isPartOf":{"@type":"WebSite","name":"カコモと学ぶ 決算チャレンジ","url":"https://chinjouojisan.github.io/kakogawakessan07/"}}</script>
 <meta name="description" content="加古川市 令和7年度決算の「総務費」約125億円を、クイズと予算判断シミュレーションで学べます。案内役はカコモ。">
 
 <!-- ▼▼ 公開先のURLに合わせて書き換えてください ▼▼ -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="カコモと学ぶ 決算チャレンジ 総務費編">
 <meta property="og:description" content="加古川市 令和7年度決算の「総務費」約125億円を、クイズと予算判断シミュレーションで学べます。">
-<meta property="og:image" content="https://kakogawa-giin-map.com/kessan-challenge/soumu/og-image.png">
-<meta property="og:url" content="https://kakogawa-giin-map.com/kessan-challenge/soumu/index.html">
+<meta property="og:image" content="https://chinjouojisan.github.io/soumuhi07/og-image.png">
+<meta property="og:url" content="https://chinjouojisan.github.io/soumuhi07/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="カコモと学ぶ 決算チャレンジ 総務費編">
 <meta name="twitter:description" content="加古川市 令和7年度決算の「総務費」約125億円を、クイズと予算判断シミュレーションで学べます。">
-<meta name="twitter:image" content="https://kakogawa-giin-map.com/kessan-challenge/soumu/og-image.png">
+<meta name="twitter:image" content="https://chinjouojisan.github.io/soumuhi07/og-image.png">
 <!-- ▲▲ ここまで ▲▲ -->
 
 <link rel="manifest" href="manifest.json">
@@ -431,10 +433,33 @@ function renderHome(){
     app.appendChild(r8card);
   }
 
-  const note = document.createElement('p');
-  note.className = 'footer-note';
-  note.innerHTML = 'このサイトは、加古川生まれのカコモが案内する、市民有志による<strong>加古川市の非公式コンテンツ</strong>です。加古川市が公式に作成・監修したものではありません。<br><br>出典: 加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）、令和8年度予算のポイント・予算書。<br><br>本編シミュレーションで示す「一人当たり」「1件あたり」等の単価は、公開されている決算資料の総額を件数・人数で単純に割った参考値であり、制度上の実際の給付額や事業の妥当性を評価したものではありません。<br><br>この事業について議会でどんな議論があったかは、議事録公開後に見てみる予定です。';
-  app.appendChild(note);
+  const infoCard = document.createElement('div');
+  infoCard.className = 'menu-card';
+  infoCard.style.cssText = 'cursor:default; margin-top:16px;';
+  infoCard.innerHTML = `
+    <div class="label">このサイトについて</div>
+      <details style="margin-top:6px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">運営者情報</summary>
+        <p style="font-size:12px; line-height:1.8; color:var(--ink-soft); margin:6px 0 0;">サービス名：カコモと学ぶ 決算チャレンジ<br>運営者：石原英一（加古川市議会議員マップ）<br>連絡先：chinjou.ojisan@gmail.com<br><br>運営者は加古川市議会議員ではなく、一市民として本サービスを制作しています。同じ運営者による関連サイトに「<a href="https://kakogawa-giin-map.com/" target="_blank" rel="noopener" style="color:var(--water);">加古川市議会議員マップ</a>」があります。</p>
+      </details>
+      <details style="margin-top:6px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">データの出典</summary>
+        <p style="font-size:12px; line-height:1.8; color:var(--ink-soft); margin:6px 0 0;">加古川市 令和7年度各会計歳入歳出決算書・決算事項別明細書・主要な施策の成果（事業報告書）、令和8年度予算のポイント・予算書。</p>
+      </details>
+      <details style="margin-top:6px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">免責事項</summary>
+        <p style="font-size:12px; line-height:1.8; color:var(--ink-soft); margin:6px 0 0;">このサイトは、加古川生まれのカコモが案内する、市民有志による<strong>加古川市の非公式コンテンツ</strong>です。加古川市が公式に作成・監修したものではありません。<br><br>本編シミュレーションで示す「一人当たり」「1件あたり」等の単価は、公開されている決算資料の総額を件数・人数で単純に割った参考値であり、制度上の実際の給付額や事業の妥当性を評価したものではありません。<br><br>この事業について議会でどんな議論があったかは、議事録公開後に見てみる予定です。</p>
+      </details>
+      <details style="margin-top:6px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">個人情報について</summary>
+        <p style="font-size:12px; line-height:1.8; color:var(--ink-soft); margin:6px 0 0;">このサイトでの判断結果やメモは、すべてお使いの端末のブラウザ内(localStorage)に保存され、外部のサーバーには送信されません。運営者を含め、第三者が個々の入力内容を閲覧することはできません。</p>
+      </details>
+      <details style="margin-top:6px;">
+        <summary style="cursor:pointer; font-size:13px; font-weight:600; color:var(--navy);">訂正・お問い合わせ</summary>
+        <p style="font-size:12px; line-height:1.8; color:var(--ink-soft); margin:6px 0 0;">内容の誤りに気づいた場合や、ご意見・お問い合わせは下記までご連絡ください。確認のうえ、必要に応じて修正します。<br><br>連絡先：<a href="mailto:chinjou.ojisan@gmail.com" style="color:var(--water);">chinjou.ojisan@gmail.com</a></p>
+      </details>
+  `;
+  app.appendChild(infoCard);
 }
 
 /* ---------- クイズ ---------- */
